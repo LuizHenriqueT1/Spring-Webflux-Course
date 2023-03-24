@@ -1,5 +1,7 @@
 package br.com.rick.webflux.controller;
 
+import br.com.rick.webflux.model.request.UserRequest;
+import br.com.rick.webflux.model.response.UserResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
@@ -17,8 +19,8 @@ public interface UserController {
     ResponseEntity<Flux<UserResponse>> findAll();
 
     @PatchMapping(value = "/{id}")
-    ResponseEntity<Mono<UserResponse>> update(@PathVariable String id, RequestBody UserRequest request);
+    ResponseEntity<Mono<UserResponse>> update(@PathVariable String id, @RequestBody UserRequest request);
 
     @DeleteMapping(value = "/{id}")
-    ResponseEntity<Mono<void>> delete (@PathVariable String id);
+    ResponseEntity<Mono<Void>> delete (@PathVariable String id);
 }
